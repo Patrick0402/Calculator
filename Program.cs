@@ -98,27 +98,33 @@
             while (true)
             {
                 Console.WriteLine("Escolha uma opção:");
-                Console.WriteLine("1 - Retornar ao menu");
+                Console.WriteLine("1 - Retornar ao menu (Padrão)");
                 Console.WriteLine("0 - Sair da calculadora");
 
                 int opcao;
+
                 if (int.TryParse(Console.ReadLine(), out opcao))
                 {
-                    if (opcao == 1)
+                    switch (opcao)
                     {
-                        Console.Clear();
-                        return; // Retorna ao menu
-                    }
-                    else if (opcao == 0)
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Encerrando o programa...");
-                        Environment.Exit(0); // Encerra o programa
+                        case 1:
+                            Console.Clear();
+                            return; // Retorna ao menu principal
+                        case 0:
+                            Console.Clear();
+                            Console.WriteLine("Saindo da calculadora...");
+                            Environment.Exit(0); // Encerra o programa
+                            break;
+                        default:
+                            Console.Clear();
+                            return; // Retorna ao menu principal
                     }
                 }
-
-                Console.Clear();
-                Console.WriteLine("Opção inválida. Por favor, escolha 1 ou 0.");
+                else
+                {
+                    Console.Clear();
+                    return;
+                }
             }
         }
 
